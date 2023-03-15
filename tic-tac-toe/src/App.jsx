@@ -64,11 +64,11 @@ function App () {
   }, [board, turn])
 
   const updateScore = (newWinner) => {
-    if (newWinner === '╳') {
+    if (newWinner === '❌') {
       const newXScore = xScore + 1
       setXScore(newXScore)
       window.localStorage.setItem('xScore', JSON.stringify(newXScore))
-    } else if (newWinner === '⃝') {
+    } else if (newWinner === '🔴') {
       const newOScore = oScore + 1
       setOScore(newOScore)
       window.localStorage.setItem('oScore', JSON.stringify(newOScore))
