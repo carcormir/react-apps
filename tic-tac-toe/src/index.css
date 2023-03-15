@@ -19,6 +19,8 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -30,8 +32,10 @@ body {
 }
 
 .board {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
   width: fit-content;
-  margin: 40px auto;
   padding: 30px 50px 20px 50px;
   text-align: center;
   border: 1px solid white;
@@ -45,6 +49,7 @@ body {
 }
 
 .board button {
+  display: flex;
   padding: 8px 12px;
   margin: 25px;
   background: transparent;
@@ -56,6 +61,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   white-space: nowrap;
+  justify-content: center;
 }
 
 .board button:hover {
@@ -113,7 +119,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 15px;
-  padding-top: 20px ;
+  padding-top: 20px;
 }
 
 .winner .win {
@@ -132,7 +138,7 @@ body {
 }
 
 .square {
-  width:75px;
+  width: 75px;
   height: 75px;
   border: 2px solid #eee;
   border-radius: 4px;
