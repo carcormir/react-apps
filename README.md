@@ -8,3 +8,9 @@ This repository contains different simple apps that were created using REACT and
 
 
 https://twitter-card-carcormir.vercel.app/
+
+## Tic-Tac-Toe
+
+![tic-tac-toe](https://user-images.githubusercontent.com/28289997/225319849-9f08d08f-631a-43f7-a349-5f4b867bfe2c.gif)
+
+https://tic-tac-toe-carcormir.vercel.app/
