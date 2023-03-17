@@ -1,19 +1,16 @@
 import { useRef, useState, useEffect } from 'react'
 import './App.css'
-
-const WIDTH = window.innerWidth - 50
-const HEIGHT = window.innerHeight - 50
-const MAX_TIME = 2000
-const WIN_COUNT = 10
+import ModalPortal from './Components/WinnerModal'
+import { WIDTH, HEIGHT, WIN_COUNT, MAX_TIME, MESSAGES } from './constants'
 
 function App () {
   const [enable, setEnable] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [opacity, setOpacity] = useState(0.0)
   const [timeBetweenEvents, setTimeBetweenEvents] = useState(null)
-  const [gameStatus, setGameStatus] = useState(false)
   const [count, setCount] = useState(0)
   const [message, setMessage] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
   const pointToWin = useRef(null)
   const previousTimestampRef = useRef(null)
@@ -27,6 +24,7 @@ function App () {
     return Math.random() * (max - min) + min
   }
 
+  // effect to create the mouse follower
   useEffect(() => {
     const handleMove = (evt) => {
       const { clientX, clientY } = evt
@@ -45,6 +43,7 @@ function App () {
     }
   }, [enable])
 
+  // effect to handle the mouse over the goal
   useEffect(() => {
     const handleOver = (evt) => {
       const { randomTop, randomLeft } = getNewGoal()
@@ -68,6 +67,26 @@ function App () {
     }
   }, [enable])
 
+  // effect to update the message and check for the win
+  useEffect(() => {
+    if (timeBetweenEvents > MAX_TIME) {
+      setCount(0)
+      setMessage(MESSAGES.lost)
+      setShowModal(true)
+      document.body.classList.remove('no-cursor')
+    } else {
+      setCount((count) => count + 1)
+      setMessage('')
+      setShowModal(false)
+    }
+    if (count > WIN_COUNT) {
+      setMessage(MESSAGES.win)
+      setShowModal(true)
+      document.body.classList.remove('no-cursor')
+    }
+  }, [timeBetweenEvents])
+
+  // effect to remove the cursor when mouse follower is enable
   useEffect(() => {
     document.body.classList.toggle('no-cursor', enable)
 
@@ -76,34 +95,29 @@ function App () {
     }
   }, [enable])
 
-  useEffect(() => {
-    if (timeBetweenEvents > MAX_TIME) {
-      console.log('TOO Lateeee')
-      setGameStatus(false)
-      setCount(0)
-      setMessage('YOU ARE TOO SLOWWWW')
-    } else {
-      setCount((count) => count + 1)
-      setMessage('')
-    }
-    if (count > WIN_COUNT) {
-      setGameStatus(true)
-      setMessage('CONGRATULATIONS, YOU WON!')
-    }
-  }, [timeBetweenEvents])
-
+  // restart the game when the button is onClick
   const handleClick = () => {
     setEnable(!enable)
-    setTimeBetweenEvents(null)
-    setGameStatus(null)
+    setTimeBetweenEvents(0)
     setCount(0)
+    setShowModal(false)
+    previousTimestampRef.current = Date.now()
+  }
+
+  const handleGameOver = () => {
+    setShowModal(false)
+    setEnable(!enable)
+    setTimeBetweenEvents(0)
+    setCount(0)
+    setShowModal(false)
+    previousTimestampRef.current = Date.now()
   }
 
   return (
     <main>
       <div style={{
         position: 'absolute',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(150, 150, 255, 0.5)',
         border: '1px solid white',
         borderRadius: '50%',
         opacity: `${opacity}`,
@@ -115,12 +129,13 @@ function App () {
         transform: `translate(${position.x}px, ${position.y}px)`
       }}
       />
-      <span ref={pointToWin} className='goal'>🤡</span>
+      <span ref={pointToWin} className='goal'>🫥</span>
       <button onClick={handleClick}>{enable ? 'Stop' : 'Start'} the game</button>
       {timeBetweenEvents !== null && (
-        <p>Time between events: {timeBetweenEvents} ms</p>
+        <div className='time-interval'>Move time: {timeBetweenEvents} ms</div>
       )}
-      <p>{message}</p>
+      {/* Show a time countdown based on wintime */}
+      {showModal && <ModalPortal onClose={handleGameOver}>{message}</ModalPortal>}
     </main>
   )
 }

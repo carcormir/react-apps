@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(150, 150, 150);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -64,4 +64,9 @@ button:hover {
   top: 100px;
   left: 100px;
   font-size: 2em;
+
+}
+
+.time-interval {
+  font-size: 0.9em;
 }
