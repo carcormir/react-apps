@@ -7,9 +7,10 @@ function App () {
   const [enable, setEnable] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [opacity, setOpacity] = useState(0.0)
-  const [timeBetweenEvents, setTimeBetweenEvents] = useState(null)
+  const [timeBetweenEvents, setTimeBetweenEvents] = useState(0)
   const [count, setCount] = useState(0)
   const [message, setMessage] = useState('')
+  const [result, setResult] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
   const pointToWin = useRef(null)
@@ -73,6 +74,7 @@ function App () {
       setCount(0)
       setMessage(MESSAGES.lost)
       setShowModal(true)
+      setResult(false)
       document.body.classList.remove('no-cursor')
     } else {
       setCount((count) => count + 1)
@@ -82,6 +84,7 @@ function App () {
     if (count > WIN_COUNT) {
       setMessage(MESSAGES.win)
       setShowModal(true)
+      setResult(true)
       document.body.classList.remove('no-cursor')
     }
   }, [timeBetweenEvents])
@@ -101,6 +104,9 @@ function App () {
     setTimeBetweenEvents(0)
     setCount(0)
     setShowModal(false)
+    document.getElementById('main-button').disabled = true
+    document.getElementById('main-button').classList.toggle('no-hover')
+    document.getElementById('main-button').classList.toggle('main-button-move')
     previousTimestampRef.current = Date.now()
   }
 
@@ -110,6 +116,9 @@ function App () {
     setTimeBetweenEvents(0)
     setCount(0)
     setShowModal(false)
+    document.getElementById('main-button').disabled = false
+    document.getElementById('main-button').classList.remove('no-hover')
+    document.getElementById('main-button').classList.remove('main-button-move')
     previousTimestampRef.current = Date.now()
   }
 
@@ -117,7 +126,7 @@ function App () {
     <main>
       <div style={{
         position: 'absolute',
-        backgroundColor: 'rgba(150, 150, 255, 0.5)',
+        backgroundColor: 'rgba(250, 250, 250, 0.5)',
         border: '1px solid white',
         borderRadius: '50%',
         opacity: `${opacity}`,
@@ -130,12 +139,10 @@ function App () {
       }}
       />
       <span ref={pointToWin} className='goal'>🫥</span>
-      <button onClick={handleClick}>{enable ? 'Stop' : 'Start'} the game</button>
-      {timeBetweenEvents !== null && (
-        <div className='time-interval'>Move time: {timeBetweenEvents} ms</div>
-      )}
+      <button id='main-button' onClick={handleClick}>{enable ? 'Stop' : 'Start'} the game</button>
+      <div className='time-interval'>Move time: {timeBetweenEvents} ms</div>
       {/* Show a time countdown based on wintime */}
-      {showModal && <ModalPortal onClose={handleGameOver}>{message}</ModalPortal>}
+      {showModal && <ModalPortal onClose={handleGameOver} result={result}>{message}</ModalPortal>}
     </main>
   )
 }

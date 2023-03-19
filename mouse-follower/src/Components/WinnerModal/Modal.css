@@ -1,5 +1,16 @@
-.modal {
-  background-color: rgb(255, 255, 255, 0.6);
+.modal-winner {
+  background-color: rgb(150, 255, 150, 0.6);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+.modal-loser {
+  background-color: rgb(255, 150, 150, 0.6);
   backdrop-filter: blur(10px);
   position: absolute;
   bottom: 0;

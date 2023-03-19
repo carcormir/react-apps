@@ -1,11 +1,11 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: rgb(150, 150, 150);
+  background-image: radial-gradient(rgb(190, 190, 250), rgb(150, 150, 250), rgb(120, 120, 250));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -42,15 +42,18 @@ h1 {
 }
 
 button {
+  display: flex;
   border-radius: 8px;
   border: 1px solid transparent;
+  border-color: white;
+  color: white;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: rgba(150, 150, 255);
   cursor: pointer;
-  transition: border-color 0.15s;
+  transition: background-color 0.15s;
 }
 
 button:hover {
@@ -58,6 +61,47 @@ button:hover {
   background-color: rgba(130, 130, 255);
 }
 
+button.no-hover {
+  pointer-events: none;
+}
+
+.main-button-move {
+  animation: move 4s linear forwards;
+  /* -webkit-animation: move 4s linear 1;
+  -moz-animation: move 4s linear 1;
+  -o-animation: move 4s linear 1; */
+}
+
+.main-button-move-back {
+  animation: move-back 4s linear forwards;
+  /* -webkit-animation: move 4s linear 1;
+  -moz-animation: move 4s linear 1;
+  -o-animation: move 4s linear 1; */
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(5000px);
+    opacity: 0;
+  }
+}
+
+@keyframes move-back {
+  0% {
+    transform: translate(5000px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}
 
 .goal {
   position: absolute;
