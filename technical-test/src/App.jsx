@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 import { CAT_PREFIX_IMAGE_URL } from './constants'
 import { useCatFact } from './hooks/useCatFact'
+import { useCatImage } from './hooks/useCatImage'
 
 export function App () {
   const { fact, refreshFact } = useCatFact()
