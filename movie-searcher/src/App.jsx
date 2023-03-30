@@ -1,5 +1,5 @@
 import './App.css'
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
@@ -45,9 +45,16 @@ function App () {
       <header>
         <h1>Movie Searcher</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <input onChange={handleChange} value={search} name='search' placeholder='Pick a movie!' />
-          <input type='checkbox' onChange={handleSort} checked={sort} />
-          <button>Search</button>
+          <div className='form-row-input'>
+            <input onChange={handleChange} value={search} name='search' placeholder='Pick a movie!' />
+            <button>Search</button>
+          </div>
+          <div className='form-row-options'>
+            <label>
+              <input type='checkbox' onChange={handleSort} checked={sort} />
+              Sort movies by name
+            </label>
+          </div>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </header>

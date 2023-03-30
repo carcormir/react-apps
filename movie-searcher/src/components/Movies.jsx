@@ -4,8 +4,10 @@ export function ListOfMovies ({ movies }) {
       {
       movies.map(movie => (
         <li className='movie' key={movie.id}>
-          <h3>{movie.title}</h3>
-          <p>{movie.year}</p>
+          <div className='movie-header'>
+            <span>{movie.title}</span>
+            <p>{movie.year}</p>
+          </div>
           <img src={movie.poster} alt={movie.title} />
         </li>
       ))

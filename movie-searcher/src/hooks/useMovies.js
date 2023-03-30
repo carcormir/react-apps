@@ -4,7 +4,7 @@ import { searchMovies } from '../services/getMovies'
 export function useMovies ({ search, sort }) {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [, setError] = useState(false)
   const previousSearch = useRef(search)
 
   // This is function is created everytime there is a change in the search input

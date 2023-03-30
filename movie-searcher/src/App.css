@@ -4,8 +4,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 800px;
-
+  max-width: 700px;
+  box-shadow: 0 0 10px white;
+  padding: 50px;
 }
 
 main {
@@ -14,14 +15,29 @@ main {
   width: 100%;
 }
 
-h1 {
+header h1 {
+  font-size: 3rem;
   text-align: center;
 }
 
 .form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
+}
+
+.form-row-input {
+  display: flex;
+}
+
+.form-row-options {
+  display: flex;
+}
+
+.form-row-options label {
+  font-size: 0.9em;
 }
 
 .movies {
@@ -35,15 +51,38 @@ h1 {
 }
 
 .movie {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+
+  gap: 10px;
 }
 
-.movie h3,
 .movie p {
   margin: 0;
+  font-weight: lighter;
 }
+
+.movie span {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.movie-header {
+  margin-top: 30px;
+  vertical-align: top;
+  justify-self: center;
+}
+
 
 .movie img {
   border-radius: 7px;
   margin-top: 10px;
+  transition: all 0.3ms;
+}
+
+.movie img:hover {
+  box-shadow: 0 0 10px white;
+  scale: 1.05;
+  cursor: pointer;
 }
