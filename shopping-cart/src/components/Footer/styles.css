@@ -21,3 +21,20 @@
   margin: 0;
   display: flex;
 }
+
+.footer .footer-initial {
+  font-size: 20px;
+  padding: 5px 1px;
+}
+
+.footer .footer-hovered {
+  display: none;
+}
+
+.footer:hover .footer-hovered {
+  display: block;
+}
+
+.footer:hover .footer-initial {
+  display: none;
+}

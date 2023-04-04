@@ -4,7 +4,6 @@ import './styles.css'
 
 export function Filters () {
   const { filters, setFilters } = useFilters()
-  const [minPrice, setMinPrice] = useState(0)
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
 
@@ -44,7 +43,7 @@ export function Filters () {
         >
           <option value='all'>All</option>
           <option value='laptops'>Laptops</option>
-          <option value='phones'>Phones</option>
+          <option value='smartphones'>Smartphones</option>
         </select>
       </div>
     </section>

@@ -26,10 +26,12 @@ export function Cart () {
 
   return (
     <>
-      <label className='cart-button' htmlFor={cartCheckboxId}>
-        <CartIcon />
-      </label>
-      <input id={cartCheckboxId} type='checkbox' hidden />
+      <div className='cart-banner'>
+        <label className='cart-button' htmlFor={cartCheckboxId}>
+          <CartIcon />
+        </label>
+        <input id={cartCheckboxId} type='checkbox' hidden />
+      </div>
       <aside className='cart'>
         <ul>
           {
@@ -40,7 +42,7 @@ export function Cart () {
                 {...product}
               />
             ))
-          }
+            }
         </ul>
         <button onClick={clearCart}><ClearCartIcon /></button>
       </aside>

@@ -13,9 +13,14 @@ export function Footer () {
       {
         JSON.stringify(cart, null, 2)
       } */}
-      <h4>E-commerce like app</h4>
-      <span>carcormir@gmail.com</span>
-      <h5>Usage of context and reducer</h5>
+      <div className='footer-initial'>
+        ?
+      </div>
+      <div className='footer-hovered'>
+        <h4>E-commerce like app</h4>
+        <span>carcormir@gmail.com</span>
+        <h5>Usage of useContext and useReducer</h5>
+      </div>
     </footer>
   )
 }
