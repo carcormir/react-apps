@@ -5,9 +5,19 @@
   font-size: 14px;
   font-weight: bold;
   color: #FEFAE0;
+  gap: 20px;
 }
 
-.filters div {
+.category {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 10px
+}
+
+.min-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
