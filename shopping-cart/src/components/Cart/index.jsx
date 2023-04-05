@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import { CartIcon, ClearCartIcon, RemoveFromCartIcon } from '../Icons'
+import { CartIcon, ClearCartIcon, BurgerIcon, UserIcon, BagIcon } from '../Icons'
 import './styles.css'
 import { useCart } from '../../hooks/useCart'
 
@@ -26,26 +26,35 @@ export function Cart () {
 
   return (
     <>
-      <div className='cart-banner'>
+      <div className='page-header'>
+        <button className='user-button'><UserIcon /></button>
+        <button className='burger-button'><BurgerIcon /></button>
         <label className='cart-button' htmlFor={cartCheckboxId}>
-          <CartIcon />
+          <BagIcon />
         </label>
         <input id={cartCheckboxId} type='checkbox' hidden />
-      </div>
-      <aside className='cart'>
-        <ul>
+        <aside className='cart'>
+          <br />
           {
-            cart.map(product => (
-              <CartItem
-                key={product.id}
-                addToCart={() => addToCart(product)}
-                {...product}
-              />
-            ))
-            }
-        </ul>
-        <button onClick={clearCart}><ClearCartIcon /></button>
-      </aside>
+            cart.length > 0
+              ? <span>This is your current shopping cart:</span>
+              : <span>You shopping cart is empty </span>
+          }
+
+          <ul>
+            {
+              cart.map(product => (
+                <CartItem
+                  key={product.id}
+                  addToCart={() => addToCart(product)}
+                  {...product}
+                />
+              ))
+              }
+          </ul>
+          <button className='clear-button' onClick={clearCart}><ClearCartIcon /></button>
+        </aside>
+      </div>
     </>
   )
 }

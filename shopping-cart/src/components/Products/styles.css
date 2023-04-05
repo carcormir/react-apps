@@ -18,14 +18,14 @@
   flex-direction: column;
   gap: 1rem;
   border-radius: 4px;
-  background: #ffe8d6;
+  background: #FAEDCD;
   color: #6b705c;
   padding: 1rem;
   transition: all 0.25ms;
 }
 
 .products li:hover {
-  box-shadow: 0 0 10px 5px rgba(254, 250, 224, 0.5);
+  box-shadow: 0 0 10px 1px rgba(254, 250, 224, 0.5);
 }
 
 .products span {

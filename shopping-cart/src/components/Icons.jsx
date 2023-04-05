@@ -1,3 +1,8 @@
+import informationButton from '../assets/information-button.png'
+import burgerButton from '../assets/menu-bar.png'
+import userButton from '../assets/user.png'
+import bagButton from '../assets/bag.png'
+
 export function AddToCartIcon () {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' strokeWidth='1' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
@@ -47,5 +52,29 @@ export function CartIcon () {
       <path d='M17 17h-11v-14h-2' />
       <path d='M6 5l14 1l-1 7h-13' />
     </svg>
+  )
+}
+
+export function InfoIcon () {
+  return (
+    <img src={informationButton} alt='information-icon' />
+  )
+}
+
+export function BurgerIcon () {
+  return (
+    <img src={burgerButton} alt='menu-bar' />
+  )
+}
+
+export function UserIcon () {
+  return (
+    <img src={userButton} alt='user-icon' />
+  )
+}
+
+export function BagIcon () {
+  return (
+    <img src={bagButton} alt='bag-icon' />
   )
 }

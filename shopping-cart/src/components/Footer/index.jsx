@@ -1,5 +1,6 @@
 // import { useCart } from '../../hooks/useCart'
 // import { useFilters } from '../../hooks/useFilters'
+import { InfoIcon } from '../Icons'
 import './styles.css'
 
 export function Footer () {
@@ -14,7 +15,7 @@ export function Footer () {
         JSON.stringify(cart, null, 2)
       } */}
       <div className='footer-initial'>
-        ?
+        <InfoIcon />
       </div>
       <div className='footer-hovered'>
         <h4>E-commerce like app</h4>
